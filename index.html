@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Assignment 6-3: Battleship with Objects</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Assignment 6-3: Battleship with Objects</h1>
+
+    <script>
+        //Joe Childress
+
+        var ship = {
+            locations: [],
+            hits: ["", "", ""],
+            init: function() {
+                // initialize the ship's location
+
+                //random first location
+                var randomLoc = Math.floor(Math.random() * 5);
+
+                //add to array
+                this.locations.push(randomLoc);
+
+                //add two more locations based on the first one
+                this.locations.push(randomLoc + 1);
+                this.locations.push(randomLoc + 2);
+                //            
+                console.log("The battleship is located at: ", this.locations);
+                alert(this.locations);
+
+            },
+            strike: function() {
+                // prompt user for location
+                // test to see if it's a hit
+                // let user know if they got a hit or miss
+                
+                var guess = prompt("Ready, aim, fire! (enter a number from 0-6):");
+
+
+            if (guess > 6 || guess < 0 || guess == ''){
+
+                alert('Please enter a valid cell number');
+
+            } else {
+                alert("location array is "+ ship.locations);
+                alert("guess:"+ guess);
+                var idx = ship.locations.indexOf(guess);
+                alert("index is "+ idx);
+            }   
+                
+            },
+            isSunk: function() {
+                
+                // check to see if the ship is sunk
+                // let user know if they sunk the ship
+                // return true if the ship is sunk, otherwise return false
+            }
+        };
+
+
+        //Test your code  
+        
+        //make location array
+        ship.init();
+        
+        while (ship.isSunk() == false) {
+            ship.strike();
+        }
+        
+    </script>
+
+</body>
+
+</html>
